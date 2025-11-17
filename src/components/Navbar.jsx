@@ -7,11 +7,11 @@ const Navbar = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-amber-400 h-10"></div>
+      <div className="bg-emerald-600 h-10"></div>
 
       {/* Navbar */}
-      <nav className="bg-white/80 backdrop-blur-md shadow-md w-full   transition-all duration-300">
-        <div className="max-w-7xl mx-auto h-[80px] flex justify-between items-center px-4 md:px-6">
+      <nav className="bg-white/80 backdrop-blur-md shadow-md w-full  transition-all duration-300">
+        <div className="max-w-7xl mx-auto h-[100px] flex justify-between items-center px-4 md:px-6">
 
           {/* Logo */}
           <div className="flex items-center space-x-2 cursor-pointer">
