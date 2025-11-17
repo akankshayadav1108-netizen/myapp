@@ -63,7 +63,7 @@ export default function Login() {
           {/* Forgot Password */}
           <div className="text-right mt-2">
             <Link
-              to="/forgot-password"
+              to="/forget"
               className="text-emerald-600 hover:text-emerald-800 font-medium transition"
             >
               Forgot Password?

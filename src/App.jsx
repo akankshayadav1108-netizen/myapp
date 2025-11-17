@@ -13,6 +13,7 @@ import OtpVerify from './pages/OtpVerify';
 import Signup from './pages/Signup';
 import Header from './components/Header';
 import DropdownMenu from './pages/DropdownMenu';
+import Forget from './pages/Forget';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="otp-verify" element={<OtpVerify />} />
           <Route path="/Header" element={<Header/>}/>
+          <Route path="/forget"  element={<Forget/>} />
         </Route>
 
       </Routes>
