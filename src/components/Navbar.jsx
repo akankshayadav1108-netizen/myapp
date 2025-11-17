@@ -6,90 +6,91 @@ const Navbar = () => {
 
   return (
     <>
-    <div className="bg-amber-400 h-10 ">
- 
-    </div>
-    <nav className="bg-white/80 backdrop-blur-md shadow-md  w-full  transition-all duration-300">
-      <div className="max-w-7xl h-[100px] mx-auto flex justify-between items-center px-6 py-3">
+      {/* Top Bar */}
+      <div className="bg-amber-400 h-10"></div>
 
-        {/* Logo */}
-        <div className="flex items-center space-x-2 cursor-pointer">
-          <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-xl shadow-lg">
-            F
+      {/* Navbar */}
+      <nav className="bg-white/80 backdrop-blur-md shadow-md w-full fixed top-10 z-50 transition-all duration-300">
+        <div className="max-w-7xl mx-auto h-[80px] flex justify-between items-center px-4 md:px-6">
+
+          {/* Logo */}
+          <div className="flex items-center space-x-2 cursor-pointer">
+            <div className="flex items-center justify-center w-11 h-11 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold text-xl shadow-lg">
+              F
+            </div>
+            <h1 className="text-xl sm:text-2xl font-extrabold text-gray-800 tracking-wide">
+              Fill<span className="text-emerald-600">It</span>
+            </h1>
           </div>
-          <h1 className="text-2xl font-extrabold text-gray-800 tracking-wide">
-            Fill<span className="text-emerald-600">It</span>
-          </h1>
-        </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-10 text-gray-700 font-semibold">
-          <a href="#home" className="hover:text-emerald-600 transition duration-300">
-            Home
-          </a>
-          <a href="#about" className="hover:text-emerald-600 transition duration-300">
-            About
-          </a>
-          <a href="#contact" className="hover:text-emerald-600 transition duration-300">
-            Contact
-          </a>
-        </div>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-10 text-gray-700 font-semibold">
+            <a href="#home" className="hover:text-emerald-600 transition">Home</a>
+            <a href="#about" className="hover:text-emerald-600 transition">About</a>
+            <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
+          </div>
 
-        {/* Desktop Buttons */}
-        <div className="hidden md:flex space-x-4">
-          <NavLink to="Login">
-          <button className="px-4 py-2 border border-emerald-500 text-emerald-600 rounded-lg hover:bg-emerald-500 hover:text-white transition duration-300 shadow-sm">
-            Login
-          </button>
-          </NavLink>
-         
-          <NavLink to="Signup">
-             <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition duration-300 shadow-sm">
-            Sign Up
-          </button>
-          </NavLink>
-          
-         
-        </div>
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex space-x-4">
+            <NavLink to="Login">
+              <button className="px-4 py-2 border border-emerald-500 text-emerald-600 rounded-lg hover:bg-emerald-500 hover:text-white transition shadow-sm">
+                Login
+              </button>
+            </NavLink>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
+            <NavLink to="Signup">
+              <button className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition shadow-sm">
+                Sign Up
+              </button>
+            </NavLink>
+          </div>
+
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-emerald-600 focus:outline-none"
+            className="md:hidden text-emerald-600 focus:outline-none"
           >
             {isOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-lg rounded-b-2xl px-6 py-5 space-y-5 text-gray-700 font-medium animate-slide-down">
+        {/* Mobile Dropdown */}
+        <div
+          className={`md:hidden bg-white shadow-lg rounded-b-2xl px-6 py-5 space-y-5 text-gray-700 font-medium transition-all duration-300 
+          ${isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}
+        >
           <a href="#home" className="block hover:text-emerald-600">Home</a>
           <a href="#about" className="block hover:text-emerald-600">About</a>
           <a href="#contact" className="block hover:text-emerald-600">Contact</a>
 
           <div className="pt-3 border-t border-gray-200">
-            <button className="w-full mb-3 px-4 py-2 border border-emerald-500 text-emerald-600 rounded-lg hover:bg-emerald-500 hover:text-white transition duration-300">
-              Login
-            </button>
-            <button className="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition duration-300">
-              Sign Up
-            </button>
+            <NavLink to="/Login">
+              <button className="w-full mb-3 px-4 py-2 border border-emerald-500 text-emerald-600 rounded-lg hover:bg-emerald-500 hover:text-white transition">
+                Login
+              </button>
+            </NavLink>
+
+            <NavLink to="/Signup">
+              <button className="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
+                Sign Up
+              </button>
+            </NavLink>
           </div>
         </div>
-      )}
-    </nav>
-    <Outlet/>
+      </nav>
+
+      {/* Page Content */}
+      <div className="pt-[140px]">
+        <Outlet />
+      </div>
     </>
   );
 };

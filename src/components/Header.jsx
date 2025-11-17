@@ -6,17 +6,13 @@ export default function Header() {
   const [open, setOpen] = useState(false);
    
 
-
-
-
-
   return (
 
  
-    <div className="w-full bg-white shadow-md p-4 rounded-2xl  flex items-center justify-between">
+    <div className="w-full bg-white shadow-md p-4 rounded-2xl flex items-center justify-between">
       
       {/* LEFT SECTION */}
-      <div className="bg-emerald-600 flex w-[80%] rounded-2xl gap-20 p-4">
+      <div className="bg-emerald-600 flex w-[80%] rounded-2xl gap-25 p-4">
 
         {/* Logo */}
         <div className="text-white px-6 py-4 rounded-xl">
