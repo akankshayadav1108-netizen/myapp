@@ -71,7 +71,7 @@ export default function Login() {
           </div>
 
           {/* LOGIN BUTTON */}
-          <NavLink to="Header">
+          <NavLink to="/Header">
          <button
             type="submit"
             className="w-full py-3 rounded-xl bg-emerald-600 text-white font-semibold 

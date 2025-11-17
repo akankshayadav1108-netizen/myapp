@@ -2,17 +2,17 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-white via-green-50 to-emerald-100 text-gray-900 pt-16 pb-6 px-8">
+    <footer className="bg-gradient-to-br from-gray-900 via-black to-black text-white pt-16 pb-6 px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Company Info */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Fill It</h2>
-          <p className="text-sm text-gray-900 /90 mb-4">
+          <p className="text-sm text-white /90 mb-4">
             Fill It is your trusted online form-filling platform where verified employees
             help you complete official forms securely, quickly, and correctly.
           </p>
-          <p className="text-sm text-gray-900/70">
+          <p className="text-sm text-white/70">
             Making paperwork simple, fast, and stress-free.
           </p>
         </div>
@@ -20,7 +20,7 @@ const Footer = () => {
         {/* Quick Links */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-gray-900/90">
+          <ul className="space-y-2 text-white/90">
             <li><a href="#" className="hover:text-yellow-300 transition">Home</a></li>
             <li><a href="#" className="hover:text-yellow-300 transition">About Us</a></li>
             <li><a href="#" className="hover:text-yellow-300 transition">Services</a></li>
@@ -32,7 +32,7 @@ const Footer = () => {
         {/* Contact Info */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-          <ul className="space-y-3 text-gray-900/90">
+          <ul className="space-y-3 text-white/90">
             <li>
               📍 <span className="ml-2">New Delhi, India</span>
             </li>

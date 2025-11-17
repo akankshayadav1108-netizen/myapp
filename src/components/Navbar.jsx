@@ -6,7 +6,10 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className="bg-white/80 backdrop-blur-md shadow-md fixed w-full top-0 left-0 z-50 transition-all duration-300">
+    <div className="bg-amber-400 h-10 ">
+ 
+    </div>
+    <nav className="bg-white/80 backdrop-blur-md shadow-md  w-full  transition-all duration-300">
       <div className="max-w-7xl h-[100px] mx-auto flex justify-between items-center px-6 py-3">
 
         {/* Logo */}

@@ -26,7 +26,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="otp-verify" element={<OtpVerify />} />
-          <Route path="Header" element={<Header/>}/>
+          <Route path="/Header" element={<Header/>}/>
         </Route>
 
       </Routes>

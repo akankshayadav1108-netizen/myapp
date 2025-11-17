@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Calendar, Clock, Sun, User, Settings, LogOut } from "lucide-react";
+import { Outlet } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -10,7 +11,9 @@ export default function Header() {
 
 
   return (
-    <div className="w-full bg-white shadow-md p-4 rounded-2xl flex items-center justify-between">
+
+ 
+    <div className="w-full bg-white shadow-md p-4 rounded-2xl  flex items-center justify-between">
       
       {/* LEFT SECTION */}
       <div className="bg-emerald-600 flex w-[80%] rounded-2xl gap-20 p-4">
@@ -89,5 +92,7 @@ export default function Header() {
         )}
       </div>
     </div>
+    
+     
   );
 }

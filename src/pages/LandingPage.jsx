@@ -21,7 +21,7 @@ const [isOpen, setIsOpen] = useState(false);
      
 
       {/* Hero Section */}
-    <section className="bg-gradient-to-r from-white via-emerald-50 to-emerald-100 text-gray-900 py-16 md:py-24 mt-15">
+    <section className="bg-gradient-to-r from-white via-emerald-50 to-emerald-100 text-gray-900 py-16 md:py-24 ">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-10 gap-12">
         
         {/* LEFT CONTENT */}
