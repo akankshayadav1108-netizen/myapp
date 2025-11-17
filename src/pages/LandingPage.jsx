@@ -19,7 +19,7 @@ const LandingPage = () => {
     <div className="min-h-screen font-sans bg-gradient-to-br from-white via-green-50 to-emerald-100 text-gray-800 overflow-x-hidden">
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-white via-emerald-50 to-emerald-100 text-gray-900 py-14 md:py-20">
+      <section className="bg-gradient-to-r from-white via-emerald-50 to-emerald-100 text-gray-900  md:py-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-10 gap-10">
 
           {/* LEFT */}
