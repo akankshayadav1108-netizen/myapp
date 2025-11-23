@@ -18,11 +18,11 @@ export default function AdminDashboard() {
   const adminMenu = [
     { label: "Dashboard", icon: Home, route:"/adminDashboard" },
     { label: "Users", icon: Users, route:"/adminDashboard/users" },
-    { label: "Forms request", icon: FileText },
-    { label: "Sub-admin", icon: UserCog },
-    { label: "Employee", icon: UserCheck },
+    { label: "Forms request", icon: FileText, route:"/adminDashboard/formrequest" },
+    { label: "Sub-admin", icon: UserCog, route:"/adminDashboard/subadmin"},
+    { label: "Employee", icon: UserCheck,route:"/adminDashboard/employee" },
     { label: "Reports", icon: BarChart3 },
-    { label: "Billing", icon: Receipt },
+    { label: "Billing", icon: Receipt, route:"/adminDashboard/billing"},
   ];
 
   return (

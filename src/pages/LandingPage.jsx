@@ -132,31 +132,84 @@ const LandingPage = () => {
       </section>
 
       {/* Review Section */}
-      <section className="bg-white py-16 px-4 sm:px-6 lg:px-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-600">What Our Users Say</h2>
-          <p className="text-gray-600 mt-2">Trusted by thousands of users.</p>
-        </div>
+     <div className="bg-white py-16 px-6 flex flex-col items-center">
+  <h2 className="text-3xl font-bold mb-10 text-emerald-700 text-center">
+    What Our Users Say
+  </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((_, i) => (
-            <div key={i} className="p-6 bg-green-50 rounded-2xl shadow-md border border-green-300 hover:shadow-xl transition">
-              <div className="flex gap-1 mb-3">
-                {Array(5).fill(0).map((_, j) => (
-                  <AiFillStar key={j} className="text-yellow-500 text-xl" />
-                ))}
-              </div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
 
-              <p className="text-gray-700 mb-4">
-                “Amazing service! Very helpful and fast.”
-              </p>
+    {/* Review Card */}
+    {[
+      {
+        img: "https://randomuser.me/api/portraits/men/32.jpg",
+        name: "Aarav Sharma",
+        stars: 5,
+        text: "Fill It made my form process so easy! The employee was very professional, and I got my confirmation instantly.",
+      },
+      {
+        img: "https://randomuser.me/api/portraits/women/44.jpg",
+        name: "Priya Verma",
+        stars: 4,
+        text: "Fast service and secure process! There was a slight delay in downloading the PDF, but overall a great experience.",
+      },
+      {
+        img: "https://randomuser.me/api/portraits/men/51.jpg",
+        name: "Rohit Mehta",
+        stars: 5,
+        text: "The process was super smooth. The employee guided me step-by-step. Highly recommend using Fill It!",
+      },
+      {
+        img: "https://randomuser.me/api/portraits/women/65.jpg",
+        name: "Sneha Kapoor",
+        stars: 5,
+        text: "Amazing platform! Filling my form was completely stress-free. Thank you, Fill It!",
+      },
+      {
+        img: "https://randomuser.me/api/portraits/men/28.jpg",
+        name: "Aditya Singh",
+        stars: 4,
+        text: "The user interface is clean and simple. Employee support was quick. Definitely using it again!",
+      },
+    ].map((review, index) => (
+      <div
+        key={index}
+        className="bg-white border border-emerald-200 text-gray-700 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition duration-300"
+      >
+        <div className="flex items-center mb-4">
+          <img
+            src={review.img}
+            alt={review.name}
+            className="w-12 h-12 rounded-full border-2 border-emerald-500 mr-4"
+          />
+          <div>
+            <h3 className="font-semibold text-lg text-emerald-700">
+              {review.name}
+            </h3>
 
-              <h3 className="font-semibold text-green-700">User {i + 1}</h3>
-              <p className="text-sm text-gray-500">Customer</p>
+            {/* Stars */}
+            <div className="flex">
+              {[...Array(review.stars)].map((_, i) => (
+                <svg
+                  key={i}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="gold"
+                  className="w-5 h-5"
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.2 3.674a1 1 0 00.95.69h3.862c.969 0 1.371 1.24.588 1.81l-3.124 2.27a1 1 0 00-.364 1.118l1.2 3.674c.3.921-.755 1.688-1.54 1.118L10 13.347l-3.124 2.27c-.785.57-1.84-.197-1.54-1.118l1.2-3.674a1 1 0 00-.364-1.118L3.048 9.1c-.783-.57-.38-1.81.588-1.81h3.862a1 1 0 00.95-.69l1.2-3.674z" />
+                </svg>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </section>
+
+        <p className="text-sm text-gray-600">{review.text}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Services */}
       <section id="services" className="py-20 px-4 sm:px-6 md:px-20 bg-gradient-to-tr from-emerald-50 to-white">

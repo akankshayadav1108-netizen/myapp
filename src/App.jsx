@@ -17,6 +17,31 @@ import UserPannel from './pages/UserPannel';
 import AdminDashboard from './pages/adminDashboard/AdminDashboard';
 import AdminHome from './pages/adminDashboard/AdminHome';
 import AllUsers from './pages/adminDashboard/AllUsers';
+import AllEmployee from './pages/adminDashboard/AllEmployee';
+import AllSubAdmin from './pages/adminDashboard/AllSubAdmin';
+import Billing from './pages/adminDashboard/Billing';
+import Settings from './pages/adminDashboard/Settings';
+import Profile from './pages/adminDashboard/Profile';
+import FormRequest from './pages/adminDashboard/FormRequest';
+
+import SubAdminDashboard from './pages/subAdminDashboard/SubAdminDashboard';
+import SubAdminHome from './pages/subAdminDashboard/SubAdminHome';
+import RequestForm from './pages/subAdminDashboard/RequestForm';
+import TeamManagement from './pages/subAdminDashboard/TeamManagement';
+import EmployeeWorkload from './pages/subAdminDashboard/EmployeeWorkload';
+import AssignForm from './pages/subAdminDashboard/AssignForm';
+import RequestTracking from './pages/subAdminDashboard/RequestTracking';
+import Communication from './pages/subAdminDashboard/Communication';
+import EmployeeDashboard from './pages/employeeDashboard/Employeedashboard';
+import EmployeeHome from './pages/employeeDashboard/EmployeeHome';
+import RequestInbox from './pages/employeeDashboard/RequestInbox';
+import CompletedRequests from './pages/employeeDashboard/CompleteRequests';
+import PendingRequests from './pages/employeeDashboard/PendingRequests';
+import Communications from './pages/employeeDashboard/Communications';
+import UserDashboard from './pages/userDashboard/UserDashboard';
+import UserHome from './pages/userDashboard/UserHome';
+
+
 
 function App() {
   return (
@@ -32,16 +57,51 @@ function App() {
           <Route path="otp-verify" element={<OtpVerify />} />
           <Route path="/userpanel" element={<UserPannel/>}/>
           <Route path="/forget"  element={<Forget/>} />
+          <Route path='admin' element={<AdminDashboard/>}/>
+          <Route path='subadmin' element={<SubAdminDashboard/>}/>
         </Route>
 
         {/* routing for admin */}
         <Route path='/adminDashboard' element={<AdminDashboard/>}>
          <Route index element={<AdminHome/>}/>
           <Route path='users' element={<AllUsers/>}/>
+          <Route path='subadmin'element={<AllSubAdmin/>}/>
+          <Route path='employee' element={<AllEmployee/>}/>
+          <Route path='formrequest' element={<FormRequest/>}/>
+          <Route path='billing' element={<Billing/>}/>
+          <Route path='profile' element={<Profile/>}/>
+          <Route path='setting' element={<Settings/>}/>
           </Route>
+
+
+          {/* routing for subadmin */}
+          <Route path='subAdminDashboard' element={<SubAdminDashboard/>}>
+          <Route index element={<SubAdminHome/>}/>
+          <Route path='request' element={<RequestForm/>}/>
+          <Route path='teams' element={<TeamManagement/>}/>
+           <Route path='employee' element={<EmployeeWorkload/>}/>
+           <Route path='assignform' element={<AssignForm/>}/>
+           <Route path='tracking' element={<RequestTracking/>}/>
+           <Route path='communication' element={<Communication/>}/>
+          </Route>
+          
+         {/* employee */}
+         <Route path='employeeDashboard' element={<EmployeeDashboard/>}>
+        <Route index element={<EmployeeHome/>}/>
+         <Route path='requests' element={<RequestInbox/>}/>
+         <Route path='panding' element={<PendingRequests/>}/>
+         <Route path='complete' element={<CompletedRequests/>}/>
+         <Route path='communication' element={<Communications/>}/>
+         </Route>
+
+        {/* user */}
+      <Route path='userDashboard' element={<UserDashboard/>}>
+      <Route index element={<UserHome/>}/>
+      </Route>
+
       </Routes>
       </BrowserRouter>
-       
+      
       
     
   

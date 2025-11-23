@@ -81,7 +81,7 @@ export default function AllUsers() {
           <table className="w-full border-collapse">
             {/* TABLE HEAD */}
             <thead>
-              <tr className="bg-gray-100 text-gray-700 text-sm border-b">
+              <tr className="bg-emerald-300 text-gray-700 text-sm border-b">
                 <th className="py-3 px-5 font-medium text-left">User</th>
                 <th className="py-3 px-5 font-medium text-left">Email</th>
                 <th className="py-3 px-5 font-medium text-left">

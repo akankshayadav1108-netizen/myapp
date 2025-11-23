@@ -26,8 +26,25 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-10 text-gray-700 font-semibold">
             <a href="#home" className="hover:text-emerald-600 transition">Home</a>
+           <NavLink to={"about"}>
             <a href="#about" className="hover:text-emerald-600 transition">About</a>
-            <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
+           </NavLink>
+           <NavLink to={"contact"}>
+             <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
+             </NavLink>
+           <NavLink to={"admin"}>
+            <a href="#contact" className="hover:text-emerald-600 transition">admin</a>
+            </NavLink>
+           <NavLink to={"subadmin"}>
+            <a href="#contact" className="hover:text-emerald-600 transition">subadmin</a>
+           </NavLink>
+        
+          <NavLink to={"userDashboard"}>
+   <a href="#contact" className="hover:text-emerald-600 transition">user</a>
+          </NavLink>
+           <NavLink to={"employeeDashboard"}>
+            <a href="#contact" className="hover:text-emerald-600 transition">employee</a>
+            </NavLink>
           </div>
 
           {/* Desktop Buttons */}

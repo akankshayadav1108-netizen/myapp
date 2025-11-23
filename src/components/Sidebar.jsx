@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import {
-  Home,
-  LayoutGrid,
-  Users,
-  FileText,
   Settings,
   LogOut,
   User,
@@ -13,8 +9,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar({ menuItems = [] }) {
-
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -26,56 +21,55 @@ export default function Sidebar({ menuItems = [] }) {
         {open ? <X /> : <Menu />}
       </button>
 
-      {/* SIDEBAR */}
+      {/* Sidebar Wrapper */}
       <div
-        className={`h-screen fixed top-0 left-0 z-40 
-        bg-gradient-to-b from-emerald-500 via-emerald-600 to-emerald-800 
-        text-white shadow-2xl border-r border-white/20
-        transition-all duration-300
-        ${open ? "w-64" : "w-0 overflow-hidden"} lg:w-64`}
+        className={`fixed top-0 left-0 h-screen z-40 bg-gradient-to-b 
+        from-emerald-500 via-emerald-600 to-emerald-800 text-white 
+        shadow-2xl border-r border-white/20 transition-all duration-300
+        ${open ? "w-64" : "w-0"} 
+        overflow-hidden lg:w-64`}
       >
-        {/* LOGO SECTION */}
+        {/* LOGO */}
         <div className="flex items-center gap-8 px-6 py-6 border-b border-white/20">
-          
-          <h2 className="text-3xl font-bold tracking-wide">
-            FILL IT
-          </h2>
+          <h2 className="text-3xl font-bold tracking-wide">FILL IT</h2>
         </div>
 
-        {/* MAIN MENU */}
-        <div className="px-4 py-4 space-y-1">
+        {/* MENU SECTION */}
+        <div className="px-4  space-y-1 overflow-y-auto h-[calc(100%-180px)]">
           {menuItems.map((item) => (
-            
-            <NavLink 
-            to={item.route}
+            <NavLink
+              to={item.route}
               key={item.label}
-              className="flex items-center gap-3 w-full text-left px-4 py-3 
-              rounded-lg hover:bg-white/10 hover:translate-x-1 
-              transition-all cursor-pointer group"
+              onClick={() => setOpen(false)} // auto close on mobile
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer 
+                transition-all group
+                hover:bg-white/10 hover:translate-x-1
+                ${isActive ? "bg-white/20" : ""}`
+              }
             >
               <item.icon className="w-5 h-5 group-hover:scale-110 transition" />
               <span className="font-medium">{item.label}</span>
-        </NavLink>
+            </NavLink>
           ))}
         </div>
 
         {/* BOTTOM MENU */}
-        <div className="absolute bottom-0 left-0 w-full px-4 py-4 space-y-2 border-t border-white/10">
-          <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg 
-          hover:bg-white/10 transition group">
-            <User className="w-5 h-5 group-hover:scale-110 transition" /> 
+        <div className="absolute bottom-0 left-0 w-full px-4  border-t border-white/10">
+<NavLink to={"profile"}>
+          <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-white/10 transition group">
+            <User className="w-5 h-5 group-hover:scale-110 transition" />
             Profile
           </button>
-
-          <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg 
-          hover:bg-white/10 transition group">
-            <Settings className="w-5 h-5 group-hover:scale-110 transition" /> 
+</NavLink>
+          <NavLink to={"setting"}>
+          <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-white/10 transition group">
+            <Settings className="w-5 h-5 group-hover:scale-110 transition" />
             Settings
           </button>
-
-          <button className="flex items-center gap-3 w-full px-4 py-3 
-          text-red-300 hover:bg-red-500/20 rounded-lg transition group">
-            <LogOut className="w-5 h-5 group-hover:scale-110 transition" /> 
+        </NavLink>
+          <button className="flex items-center gap-3 w-full px-4 py-3 text-red-300 hover:bg-red-500/20 rounded-lg transition group">
+            <LogOut className="w-5 h-5 group-hover:scale-110 transition" />
             Logout
           </button>
         </div>
