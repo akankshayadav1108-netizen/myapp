@@ -113,7 +113,7 @@ const UserHome = () => {
             {/* PROFILE */}
             <div className="bg-white p-6 rounded-2xl border border-emerald-200 shadow text-center">
               <User size={40} className="mx-auto text-emerald-600" />
-              <h3 className="mt-3 font-semibold text-lg">Welcome, Vinay</h3>
+              <h3 className="mt-3 font-semibold text-lg">Welcome, Aakanksha</h3>
               <p className="text-xs text-gray-500 mt-1">User Dashboard</p>
             </div>
 

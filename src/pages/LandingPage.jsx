@@ -23,7 +23,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 md:px-10 gap-10">
 
           {/* LEFT */}
-          <div className="flex-1 space-y-6 text-center md:text-left">
+          <div className="flex-1 space-y-6  ml-15 text-center md:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
               Simplify Your Form Filling <br />
               Process with{" "}
@@ -231,6 +231,21 @@ const LandingPage = () => {
               <p className="text-gray-500 mt-2">{item.desc}</p>
             </div>
           ))}
+        </div>
+        <div  className=" h-10 w-100% bg-amber-100 mt-10 gap-30 flex justify-center">
+          <NavLink to={"admin"}>
+                      <a href="#contact" className="hover:text-emerald-600 transition">admin</a>
+                      </NavLink>
+                     <NavLink to={"subAdmin"}>
+                      <a href="#contact" className="hover:text-emerald-600 transition">subadmin</a>
+                     </NavLink>
+                   <NavLink to={"emp"}>
+                      <a href="#contact" className="hover:text-emerald-600 transition">employee</a>
+                      </NavLink>
+                    <NavLink to={"user"}>
+                    <a href="#contact" className="hover:text-emerald-600 transition">user</a>
+                    </NavLink>
+                    
         </div>
       </section>
 

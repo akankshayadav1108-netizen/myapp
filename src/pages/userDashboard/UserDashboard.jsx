@@ -14,11 +14,11 @@ import { Outlet } from "react-router-dom";
 
 export default function UserDashboard() {
   const adminMenu = [
-    { label: "Dashboard", icon: Home, route:"/userDashboard" },
-     { label: "Form ", icon: ClipboardList, },
-    { label: " Pending", icon: Clock , },
-    { label: "History", icon: History,},
-    { label: "Communication", icon: MessageSquare, },
+    { label: "Dashboard", icon: Home, route:"/user" },
+     { label: "Form ", icon: ClipboardList, route:"/user/form" },
+    { label: " Pending", icon: Clock , route:"/user/pending"},
+    { label: "History", icon: History, route:"/user/history"},
+    { label: "Communication", icon: MessageSquare, route:"/user/communication" },
   ];
    
   return (

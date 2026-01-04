@@ -16,13 +16,13 @@ import { Outlet } from "react-router-dom";
 
 export default function AdminDashboard() {
   const adminMenu = [
-    { label: "Dashboard", icon: Home, route:"/adminDashboard" },
-    { label: "Users", icon: Users, route:"/adminDashboard/users" },
-    { label: "Forms request", icon: FileText, route:"/adminDashboard/formrequest" },
-    { label: "Sub-admin", icon: UserCog, route:"/adminDashboard/subadmin"},
-    { label: "Employee", icon: UserCheck,route:"/adminDashboard/employee" },
-    { label: "Reports", icon: BarChart3 },
-    { label: "Billing", icon: Receipt, route:"/adminDashboard/billing"},
+    { label: "Dashboard", icon: Home, route:"/admin" },
+    { label: "Users", icon: Users, route:"/admin/users" },
+    { label: "Forms request", icon: FileText, route:"/admin/formrequest" },
+    { label: "Sub-admin", icon: UserCog, route:"/admin/subadmin"},
+    { label: "Employee", icon: UserCheck,route:"/admin/employee" },
+    { label: "Reports", icon: BarChart3, route:"/admin/report" },
+    { label: "Billing", icon: Receipt, route:"/admin/billing"},
   ];
 
   return (

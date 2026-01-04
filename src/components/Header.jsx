@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Bell, User, MoreVertical, LogOut, Settings } from "lucide-react";
+import { Bell, MoreVertical, LogOut, Settings, User } from "lucide-react";
+import { useSelector,useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
 
 export default function Header({ username = "Admin User" }) {
   const [dateTime, setDateTime] = useState("");
-
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const user=useSelector((state)=>state.auth.user)
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const update = () => {
@@ -20,7 +24,7 @@ export default function Header({ username = "Admin User" }) {
       setDateTime(now.toLocaleString("en-IN", options));
     };
 
-    update(); // first time
+    update();
     const timer = setInterval(update, 60000);
     return () => clearInterval(timer);
   }, []);
@@ -30,7 +34,7 @@ export default function Header({ username = "Admin User" }) {
 
       {/* LEFT — Username + Date/Time */}
       <div>
-        <h2 className="text-lg font-semibold tracking-wide">{username}</h2>
+        <h2 className="text-lg font-semibold tracking-wide">welcome {user.username}</h2>
         <p className="text-white/80 text-sm">{dateTime}</p>
       </div>
 
@@ -42,10 +46,10 @@ export default function Header({ username = "Admin User" }) {
           <Bell className="w-6 h-6" />
         </button>
 
-        {/* Profile */}
-        <button className="hover:text-white/80 transition">
-          <User className="w-6 h-6" />
-        </button>
+        {/* FIRST NAME LOGO */}
+        <div className="w-9 h-9 rounded-full bg-white text-emerald-700 flex items-center justify-center font-bold text-lg shadow cursor-pointer">
+         <p>{user.username.charAt(0).toUpperCase()}</p>
+        </div>
 
         {/* 3-Dot Menu */}
         <div className="relative">
@@ -67,7 +71,9 @@ export default function Header({ username = "Admin User" }) {
                 <Settings className="w-4 h-4" /> Settings
               </button>
 
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-red-600">
+              <button 
+              onClick={() => dispatch(logout())}
+              className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-red-600">
                 <LogOut className="w-4 h-4" /> Logout
               </button>
 

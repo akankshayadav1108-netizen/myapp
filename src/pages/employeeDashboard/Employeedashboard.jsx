@@ -15,11 +15,11 @@ import { Outlet } from "react-router-dom";
 
 export default function SubAdminDashboard() {
   const adminMenu = [
-    { label: "Dashboard", icon: Home, route:"/employeeDashboard" },
-     { label: "Request Inbox ", icon: Inbox, route:"/employeeDashboard/requests" },
-    { label: " Complete Request", icon: CheckCircle, route:"/employeeDashboard/complete"},
-    { label: "Panding Request", icon: Clock, route:"/employeeDashboard/panding"},
-    { label: "Communication", icon: MessageSquare, route:"/employeeDashboard/communication"},
+    { label: "Dashboard", icon: Home, route:"/emp" },
+     { label: "Request Inbox ", icon: Inbox, route:"/emp/requests" },
+    { label: " Complete Request", icon: CheckCircle, route:"/emp/complete"},
+    { label: "Panding Request", icon: Clock, route:"/emp/panding"},
+    { label: "Communication", icon: MessageSquare, route:"/emp/communication"},
   ];
    
   return (

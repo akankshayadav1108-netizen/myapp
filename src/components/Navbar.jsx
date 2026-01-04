@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const count = useSelector((state) => state.counter.value)
   return (
     <>
       {/* Top Bar */}
@@ -26,24 +28,23 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-10 text-gray-700 font-semibold">
             <a href="#home" className="hover:text-emerald-600 transition">Home</a>
-           <NavLink to={"about"}>
-            <a href="#about" className="hover:text-emerald-600 transition">About</a>
-           </NavLink>
-           <NavLink to={"contact"}>
-             <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
-             </NavLink>
-           <NavLink to={"admin"}>
-            <a href="#contact" className="hover:text-emerald-600 transition">admin</a>
+            <NavLink to={"about"}>
+              <a href="#about" className="hover:text-emerald-600 transition">About</a>
             </NavLink>
-           <NavLink to={"subadmin"}>
-            <a href="#contact" className="hover:text-emerald-600 transition">subadmin</a>
-           </NavLink>
-        
-          <NavLink to={"userDashboard"}>
-   <a href="#contact" className="hover:text-emerald-600 transition">user</a>
-          </NavLink>
-           <NavLink to={"employeeDashboard"}>
-            <a href="#contact" className="hover:text-emerald-600 transition">employee</a>
+            <NavLink to={"contact"}>
+              <a href="#contact" className="hover:text-emerald-600 transition">Contact</a>
+            </NavLink>
+            <NavLink to={"admin"}>
+              <a href="#contact" className="hover:text-emerald-600 transition">admin</a>
+            </NavLink>
+            <NavLink to={"subAdmin"}>
+              <a href="#contact" className="hover:text-emerald-600 transition">subadmin</a>
+            </NavLink>
+            <NavLink to={"emp"}>
+              <a href="#contact" className="hover:text-emerald-600 transition">employee</a>
+            </NavLink>
+            <NavLink to={"user"}>
+              <a href="#contact" className="hover:text-emerald-600 transition">user</a>
             </NavLink>
           </div>
 
@@ -51,7 +52,7 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-4">
             <NavLink to="Login">
               <button className="px-4 py-2 border border-emerald-500 text-emerald-600 rounded-lg hover:bg-emerald-500 hover:text-white transition shadow-sm">
-                Login
+                Login {count}
               </button>
             </NavLink>
 
@@ -104,7 +105,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <Outlet/>
+      <Outlet />
     </>
   );
 };

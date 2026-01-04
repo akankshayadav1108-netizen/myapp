@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
 import {
   Settings,
   LogOut,
@@ -10,6 +12,8 @@ import { NavLink } from "react-router-dom";
 
 export default function Sidebar({ menuItems = [] }) {
   const [open, setOpen] = useState(false);
+   const dispatch = useDispatch();
+  
 
   return (
     <>
@@ -30,10 +34,11 @@ export default function Sidebar({ menuItems = [] }) {
         overflow-hidden lg:w-64`}
       >
         {/* LOGO */}
+        <NavLink to={"/"}>
         <div className="flex items-center gap-8 px-6 py-6 border-b border-white/20">
           <h2 className="text-3xl font-bold tracking-wide">FILL IT</h2>
         </div>
-
+  </NavLink>
         {/* MENU SECTION */}
         <div className="px-4  space-y-1 overflow-y-auto h-[calc(100%-180px)]">
           {menuItems.map((item) => (
@@ -56,19 +61,21 @@ export default function Sidebar({ menuItems = [] }) {
 
         {/* BOTTOM MENU */}
         <div className="absolute bottom-0 left-0 w-full px-4  border-t border-white/10">
-<NavLink to={"profile"}>
-          <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-white/10 transition group">
-            <User className="w-5 h-5 group-hover:scale-110 transition" />
-            Profile
-          </button>
-</NavLink>
+          <NavLink to={"profile"}>
+            <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-white/10 transition group">
+              <User className="w-5 h-5 group-hover:scale-110 transition" />
+              Profile
+            </button>
+          </NavLink>
           <NavLink to={"setting"}>
-          <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-white/10 transition group">
-            <Settings className="w-5 h-5 group-hover:scale-110 transition" />
-            Settings
-          </button>
-        </NavLink>
-          <button className="flex items-center gap-3 w-full px-4 py-3 text-red-300 hover:bg-red-500/20 rounded-lg transition group">
+            <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-white/10 transition group">
+              <Settings className="w-5 h-5 group-hover:scale-110 transition" />
+              Settings
+            </button>
+          </NavLink>
+          <button
+          onClick={() => dispatch(logout())}
+           className="flex items-center gap-3 w-full px-4 py-3 text-red-300 hover:bg-red-500/20 rounded-lg transition group">
             <LogOut className="w-5 h-5 group-hover:scale-110 transition" />
             Logout
           </button>

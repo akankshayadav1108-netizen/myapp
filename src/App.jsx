@@ -32,81 +32,114 @@ import EmployeeWorkload from './pages/subAdminDashboard/EmployeeWorkload';
 import AssignForm from './pages/subAdminDashboard/AssignForm';
 import RequestTracking from './pages/subAdminDashboard/RequestTracking';
 import Communication from './pages/subAdminDashboard/Communication';
+
 import EmployeeDashboard from './pages/employeeDashboard/Employeedashboard';
 import EmployeeHome from './pages/employeeDashboard/EmployeeHome';
 import RequestInbox from './pages/employeeDashboard/RequestInbox';
 import CompletedRequests from './pages/employeeDashboard/CompleteRequests';
 import PendingRequests from './pages/employeeDashboard/PendingRequests';
 import Communications from './pages/employeeDashboard/Communications';
+
 import UserDashboard from './pages/userDashboard/UserDashboard';
 import UserHome from './pages/userDashboard/UserHome';
+import UserForm from './pages/userDashboard/UserForm';
+import UserPending from './pages/userDashboard/UserPending';
+import UserHistory from './pages/userDashboard/UserHistory';
+import UserCommunication from './pages/userDashboard/UserCommunication';
+import AdminReport from './pages/adminDashboard/AdminReport';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import CounterBox from '../mychange/counter';
+import ProtectedRoute from './components/ProtectedRoute';
+import Unauthorized from './components/Unauthorized';
+
 
 
 
 function App() {
   return (
     <>
-    <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<Navbar />}>
-          <Route index element={<LandingPage/>} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route index element={<LandingPage />} />
 
-          {/* Nested routes (⚠ HERE: remove / from child paths) */}
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="otp-verify" element={<OtpVerify />} />
-          <Route path="/userpanel" element={<UserPannel/>}/>
-          <Route path="/forget"  element={<Forget/>} />
-          <Route path='admin' element={<AdminDashboard/>}/>
+            {/* Nested routes (HERE: remove / from child paths) */}
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="otp-verify" element={<OtpVerify />} />
+            <Route path="/userpanel" element={<UserPannel />} />
+            <Route path="/forget" element={<Forget />} />
+            <Route path='about' element={<About />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='mychange' element={<CounterBox />} />
+            {/* <Route path='admin' element={<AdminDashboard/>}/>
           <Route path='subadmin' element={<SubAdminDashboard/>}/>
-        </Route>
-
-        {/* routing for admin */}
-        <Route path='/adminDashboard' element={<AdminDashboard/>}>
-         <Route index element={<AdminHome/>}/>
-          <Route path='users' element={<AllUsers/>}/>
-          <Route path='subadmin'element={<AllSubAdmin/>}/>
-          <Route path='employee' element={<AllEmployee/>}/>
-          <Route path='formrequest' element={<FormRequest/>}/>
-          <Route path='billing' element={<Billing/>}/>
-          <Route path='profile' element={<Profile/>}/>
-          <Route path='setting' element={<Settings/>}/>
+          <Route path='employee' element={<EmployeeDashboard/>}/> */}
           </Route>
 
+          <Route path="/unathorized" element={<Unauthorized/>} />
+
+          {/* routing for admin */}
+          <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
+
+            <Route path='/admin' element={<AdminDashboard />}>
+              <Route index element={<AdminHome />} />
+              <Route path='users' element={<AllUsers />} />
+              <Route path='subadmin' element={<AllSubAdmin />} />
+              <Route path='employee' element={<AllEmployee />} />
+              <Route path='formrequest' element={<FormRequest />} />
+              <Route path='report' element={<AdminReport />} />
+              <Route path='billing' element={<Billing />} />
+              <Route path='profile' element={<Profile />} />
+              <Route path='setting' element={<Settings />} />
+            </Route>
+          </Route>
 
           {/* routing for subadmin */}
-          <Route path='subAdminDashboard' element={<SubAdminDashboard/>}>
-          <Route index element={<SubAdminHome/>}/>
-          <Route path='request' element={<RequestForm/>}/>
-          <Route path='teams' element={<TeamManagement/>}/>
-           <Route path='employee' element={<EmployeeWorkload/>}/>
-           <Route path='assignform' element={<AssignForm/>}/>
-           <Route path='tracking' element={<RequestTracking/>}/>
-           <Route path='communication' element={<Communication/>}/>
+
+          <Route element={<ProtectedRoute allowedRoles={["subAdmin"]} />}>
+            <Route path='subAdmin' element={<SubAdminDashboard />}>
+              <Route index element={<SubAdminHome />} />
+              <Route path='request' element={<RequestForm />} />
+              <Route path='teams' element={<TeamManagement />} />
+              <Route path='employee' element={<EmployeeWorkload />} />
+              <Route path='assignform' element={<AssignForm />} />
+              <Route path='tracking' element={<RequestTracking />} />
+              <Route path='communication' element={<Communication />} />
+            </Route>
           </Route>
-          
-         {/* employee */}
-         <Route path='employeeDashboard' element={<EmployeeDashboard/>}>
-        <Route index element={<EmployeeHome/>}/>
-         <Route path='requests' element={<RequestInbox/>}/>
-         <Route path='panding' element={<PendingRequests/>}/>
-         <Route path='complete' element={<CompletedRequests/>}/>
-         <Route path='communication' element={<Communications/>}/>
-         </Route>
+          {/* employee */}
+          <Route element={<ProtectedRoute allowedRoles={["employee"]} />}>
+            <Route path='emp' element={<EmployeeDashboard />}>
+              <Route index element={<EmployeeHome />} />
+              <Route path='requests' element={<RequestInbox />} />
+              <Route path='panding' element={<PendingRequests />} />
+              <Route path='complete' element={<CompletedRequests />} />
+              <Route path='communication' element={<Communications />} />
+            </Route>
+          </Route>
+          {/* user */}
+          <Route element={<ProtectedRoute allowedRoles={["user"]} />}>
 
-        {/* user */}
-      <Route path='userDashboard' element={<UserDashboard/>}>
-      <Route index element={<UserHome/>}/>
-      </Route>
+            <Route path='user' element={<UserDashboard />}>
+              <Route index element={<UserHome />} />
+              <Route path='form' element={<UserForm />} />
+              <Route path='pending' element={<UserPending />} />
+              <Route path='history' element={<UserHistory />} />
+              <Route path='communication' element={<UserCommunication />} />
+            </Route>
+          </Route>
 
-      </Routes>
+
+        </Routes>
       </BrowserRouter>
-      
-      
-    
-  
 
-    </>
+
+
+
+
+    </>
 
   )
 }

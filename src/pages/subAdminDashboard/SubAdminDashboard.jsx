@@ -16,13 +16,13 @@ import { Outlet } from "react-router-dom";
 
 export default function SubAdminDashboard() {
   const adminMenu = [
-    { label: "Dashboard", icon: Home, route:"/subAdminDashboard" },
-    { label: "Request", icon: Inbox, route:"/subAdminDashboard/request"},
-     { label: "Teams", icon: Users2, route:"/subAdminDashboard/teams"},
-    { label: "Asign Form ", icon: FileCheck, route:"/subAdminDashboard/assignform" },
-    { label: "Employee Work", icon: BarChart3, route:"/subAdminDashboard/employee" },
-    { label: "Requeest Traking", icon: ListTree, route:"/subAdminDashboard/tracking"  },
-    { label: "Communication", icon: MessageSquare , route:"/subAdminDashboard/communication"},
+    { label: "Dashboard", icon: Home, route:"/subAdmin" },
+    { label: "Request", icon: Inbox, route:"/subAdmin/request"},
+     { label: "Teams", icon: Users2, route:"/subAdmin/teams"},
+    { label: "Asign Form ", icon: FileCheck, route:"/subAdmin/assignform" },
+    { label: "Employee Work", icon: BarChart3, route:"/subAdmin/employee" },
+    { label: "Requeest Traking", icon: ListTree, route:"/subAdmin/tracking"  },
+    { label: "Communication", icon: MessageSquare , route:"/subAdmin/communication"},
   ];
    
   return (
