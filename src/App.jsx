@@ -52,6 +52,10 @@ import Contact from './pages/Contact';
 import CounterBox from '../mychange/counter';
 import ProtectedRoute from './components/ProtectedRoute';
 import Unauthorized from './components/Unauthorized';
+import FormLayout from './pages/adminDashboard/FormLayout';
+import CreateForm from './pages/adminDashboard/CreateForm';
+import ViewDetails from './pages/adminDashboard/ViewDetails';
+import EditForm from './pages/adminDashboard/EditForm';
 
 
 
@@ -88,7 +92,12 @@ function App() {
               <Route path='users' element={<AllUsers />} />
               <Route path='subadmin' element={<AllSubAdmin />} />
               <Route path='employee' element={<AllEmployee />} />
-              <Route path='formrequest' element={<FormRequest />} />
+              <Route path='formrequest' element={<FormLayout/>} > 
+              <Route index element={<FormRequest/>}/>
+              <Route path='createform' element={<CreateForm/>}/>
+              <Route path='viewdetails' element={<ViewDetails/>} />
+              
+              </Route>
               <Route path='report' element={<AdminReport />} />
               <Route path='billing' element={<Billing />} />
               <Route path='profile' element={<Profile />} />

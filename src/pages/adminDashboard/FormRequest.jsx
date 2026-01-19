@@ -1,39 +1,76 @@
-import React, { useState } from "react";
-import { Search, PlusCircle, Pencil, Trash2, FileText } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Search, PlusCircle, Pencil, Trash2, FileText, Eye } from "lucide-react";
+import api from "../../api/axios";
+import ApiStatusModal from "../../components/ApiStatusModal";
+import { NavLink } from "react-router-dom";
 
 const FormRequest = () => {
   const [search, setSearch] = useState("");
+  const [allFormData, setallFormData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
-  const forms = [
-    {
-      id: 1,
-      title: "Employee Registration Form",
-      startDate: "05 Jan 2025",
-      endDate: "25 Jan 2025",
-      documents: ["Aadhar", "Resume", "Photo"],
-    },
-    {
-      id: 2,
-      title: "Leave Application Form",
-      startDate: "01 Feb 2025",
-      endDate: "28 Feb 2025",
-      documents: ["Attendance Report"],
-    },
-    {
-      id: 3,
-      title: "Asset Allocation Form",
-      startDate: "10 Mar 2025",
-      endDate: "20 Mar 2025",
-      documents: ["ID Card", "Confirmation Letter"],
-    },
-  ];
+  const [modal, setModal] = useState({
+    open: false,
+    type: "success",
+    title: "",
+    message: "",
+  });
 
-  const filteredForms = forms.filter((form) =>
-    form.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const openModal = (data) => setModal({ open: true, ...data })
+
+  useEffect(() => {
+    const getAllForm = async () => {
+      try {
+        api.get("/form/getform")
+          .then((res) => {
+            console.log(res.data)
+            if (res.data.success) {
+              setallFormData(res.data.data)
+            }
+          })
+      } catch (err) {
+        console.log(error)
+      }
+    }
+    getAllForm();
+  }, [refresh])
+
+  console.log("all form data", allFormData);
+
+  // const filteredForms = forms.filter((form) =>
+  //   form.title.toLowerCase().includes(search.toLowerCase())
+  // );
+
+  function deleteForm(id) {
+    console.log(id)
+    try {
+      api.delete(`/form/delete/${id}`)
+        .then(res => {
+          console.log(res)
+          if (res.data.success) {
+            openModal({
+              type: "success",
+              title: "delete Successfilly",
+              massage: res.data.massage,
+            })
+          }
+        })
+      setRefresh((prev) => !prev)
+    } catch (err) {
+
+    }
+  }
 
   return (
     <section className="p-6 space-y-8 text-gray-700 min-h-screen">
+
+      <ApiStatusModal
+        open={modal.open}
+        type={modal.type}
+        title={modal.title}
+        message={modal.message}
+        onClose={() => setModal({ ...modal, open: false })}
+      />
 
       {/* HEADER */}
       <div className="flex justify-between items-center flex-wrap gap-4">
@@ -58,6 +95,7 @@ const FormRequest = () => {
         </div>
 
         {/* CREATE BUTTON */}
+        <NavLink to={"/admin/formrequest/CreateForm"}>
         <button
           className="
             flex items-center gap-2 px-5 py-2 rounded-xl
@@ -68,6 +106,7 @@ const FormRequest = () => {
           <PlusCircle size={18} />
           Create New Form
         </button>
+        </NavLink>
       </div>
 
       {/* TABLE CARD */}
@@ -94,7 +133,7 @@ const FormRequest = () => {
             </thead>
 
             <tbody>
-              {filteredForms.map((form) => (
+              {allFormData.map((form) => (
                 <tr
                   key={form.id}
                   className="border-t border-gray-200 hover:bg-emerald-50 transition"
@@ -104,18 +143,18 @@ const FormRequest = () => {
                     {form.title}
                   </td>
 
-                  <td className="py-3 px-4">{form.startDate}</td>
-                  <td className="py-3 px-4">{form.endDate}</td>
+                  <td className="py-3 px-4">{form.applicationStartDate}</td>
+                  <td className="py-3 px-4">{form.applicationEndDate}</td>
 
                   {/* DOCUMENT TAGS */}
                   <td className="py-3 px-4">
                     <div className="flex flex-wrap gap-2">
-                      {form.documents.map((doc, i) => (
+                      {form.requiredDocuments.map((doc, i) => (
                         <span
                           key={i}
                           className="text-xs px-3 py-1 rounded-lg bg-emerald-100 text-emerald-700 border border-emerald-200"
                         >
-                          {doc}
+                          {doc.name}
                         </span>
                       ))}
                     </div>
@@ -123,6 +162,7 @@ const FormRequest = () => {
 
                   {/* ACTION BUTTONS */}
                   <td className="py-3 px-4 flex gap-3">
+                    <NavLink to={"/admin/formrequest/EditForm"}>
                     <button
                       className="
                         p-2 rounded-lg bg-emerald-100 text-emerald-700
@@ -131,21 +171,36 @@ const FormRequest = () => {
                     >
                       <Pencil size={18} />
                     </button>
-
+                    </NavLink>
                     <button
                       className="
                         p-2 rounded-lg bg-red-100 text-red-700
                         hover:bg-red-200 transition
                       "
+                      onClick={() => { deleteForm(form._id) }}
                     >
                       <Trash2 size={18} />
                     </button>
+                    
+
+                    <NavLink to={"/admin/formrequest/ViewDetails"}>
+                    <button
+                      className="
+                     p-2 rounded-lg bg-blue-100 text-blue-700
+                   hover:bg-blue-200 transition
+                     "
+                      
+                    >
+                      <Eye size={18} />
+                    </button>
+                    </NavLink>
+
                   </td>
                 </tr>
               ))}
 
               {/* EMPTY STATE */}
-              {filteredForms.length === 0 && (
+              {allFormData.length === 0 && (
                 <tr>
                   <td
                     colSpan="5"
