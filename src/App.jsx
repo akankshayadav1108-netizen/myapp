@@ -60,6 +60,7 @@ import EditForm from './pages/adminDashboard/EditForm';
 
 
 
+
 function App() {
   return (
     <>
@@ -96,6 +97,7 @@ function App() {
               <Route index element={<FormRequest/>}/>
               <Route path='createform' element={<CreateForm/>}/>
               <Route path='viewdetails' element={<ViewDetails/>} />
+              <Route path='EditForm' element={<EditForm/>} />
               
               </Route>
               <Route path='report' element={<AdminReport />} />
