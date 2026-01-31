@@ -21,7 +21,7 @@ export default function AdminDashboard() {
     { label: "Forms request", icon: FileText, route:"/admin/formrequest" },
     { label: "Sub-admin", icon: UserCog, route:"/admin/subadmin"},
     { label: "Employee", icon: UserCheck,route:"/admin/employee" },
-    { label: "Reports", icon: BarChart3, route:"/admin/report" },
+    { label: "Form Category", icon: BarChart3, route:"/admin/formcategory" },
     { label: "Billing", icon: Receipt, route:"/admin/billing"},
   ];
 

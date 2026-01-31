@@ -56,6 +56,10 @@ import FormLayout from './pages/adminDashboard/FormLayout';
 import CreateForm from './pages/adminDashboard/CreateForm';
 import ViewDetails from './pages/adminDashboard/ViewDetails';
 import EditForm from './pages/adminDashboard/EditForm';
+import FormCategoryPage from "./components/forms/FormCategoryPage";
+import FormSubCategoryPage from "./components/forms/FormSubCategoryPage";
+import PublicFormList from "./components/forms/PublicFormList";
+import FormCategory from './pages/adminDashboard/FormCategory';
 
 
 
@@ -81,6 +85,11 @@ function App() {
             {/* <Route path='admin' element={<AdminDashboard/>}/>
           <Route path='subadmin' element={<SubAdminDashboard/>}/>
           <Route path='employee' element={<EmployeeDashboard/>}/> */}
+           
+           {/* public form routes */}
+           <Route path="forms" element={<FormCategoryPage />} />
+           <Route path="forms/:categorySlug" element={<FormSubCategoryPage />} />
+           <Route path="forms/:categorySlug/:subSlug" element={<PublicFormList />}/>
           </Route>
 
           <Route path="/unathorized" element={<Unauthorized/>} />
@@ -93,6 +102,7 @@ function App() {
               <Route path='users' element={<AllUsers />} />
               <Route path='subadmin' element={<AllSubAdmin />} />
               <Route path='employee' element={<AllEmployee />} />
+               <Route path='formcategory' element={<FormCategory/>} />
               <Route path='formrequest' element={<FormLayout/>} > 
               <Route index element={<FormRequest/>}/>
               <Route path='createform' element={<CreateForm/>}/>
@@ -118,6 +128,8 @@ function App() {
               <Route path='assignform' element={<AssignForm />} />
               <Route path='tracking' element={<RequestTracking />} />
               <Route path='communication' element={<Communication />} />
+              <Route path='profile' element={<Profile />} />
+              <Route path='setting' element={<Settings />} />
             </Route>
           </Route>
           {/* employee */}
@@ -128,6 +140,8 @@ function App() {
               <Route path='panding' element={<PendingRequests />} />
               <Route path='complete' element={<CompletedRequests />} />
               <Route path='communication' element={<Communications />} />
+              <Route path='profile' element={<Profile />} />
+              <Route path='setting' element={<Settings />} />
             </Route>
           </Route>
           {/* user */}
@@ -139,6 +153,8 @@ function App() {
               <Route path='pending' element={<UserPending />} />
               <Route path='history' element={<UserHistory />} />
               <Route path='communication' element={<UserCommunication />} />
+              <Route path='profile' element={<Profile />} />
+              <Route path='setting' element={<Settings />} />
             </Route>
           </Route>
 
