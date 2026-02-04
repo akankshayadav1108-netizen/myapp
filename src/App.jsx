@@ -120,7 +120,7 @@ function App() {
           {/* routing for subadmin */}
 
           <Route element={<ProtectedRoute allowedRoles={["subAdmin"]} />}>
-            <Route path='subAdmin' element={<SubAdminDashboard />}>
+            <Route path='/subAdmin' element={<SubAdminDashboard/>}>
               <Route index element={<SubAdminHome />} />
               <Route path='request' element={<RequestForm />} />
               <Route path='teams' element={<TeamManagement />} />
