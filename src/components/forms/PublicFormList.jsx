@@ -1,20 +1,33 @@
 import { useParams } from "react-router-dom";
-
-const forms = [
-  {
-    title: "SSC GD Constable 2026",
-    lastDate: "15 Feb 2026",
-    fees: "₹100"
-  },
-  {
-    title: "SSC CHSL 2026",
-    lastDate: "28 Feb 2026",
-    fees: "₹100"
-  }
-];
+import { useEffect, useState } from "react";
+import api from "../../api/axios";
 
 export default function PublicFormList() {
   const { subSlug } = useParams();
+  const [forms, setForms] = useState([]);
+
+  useEffect(() => {
+    if (!subSlug) return;
+
+    const fetchForms = async () => {
+      try {
+        const res = await api.get("/form/filter", {
+          params: {
+            subcategory: subSlug,
+            isActive: true,
+            visibility: "public",
+            sortBy: "latest"
+          }
+        });
+
+        setForms(res.data?.data || []);
+      } catch (error) {
+        console.error("Failed to fetch forms", error);
+      }
+    };
+
+    fetchForms();
+  }, [subSlug]);
 
   return (
     <div className="min-h-screen bg-[#0B1020] px-6 py-14">
@@ -25,14 +38,17 @@ export default function PublicFormList() {
       <div className="space-y-5">
         {forms.map((form, i) => (
           <div
-            key={i}
+            key={form._id || i}
             className="bg-[#121933] border border-[#1E2A5A]
               rounded-xl p-6 flex justify-between items-center"
           >
             <div>
               <h3 className="text-lg text-white">{form.title}</h3>
               <p className="text-slate-400 text-sm mt-1">
-                Last Date: {form.lastDate}
+                Last Date:{" "}
+                {form.applicationEndDate
+                  ? new Date(form.applicationEndDate).toLocaleDateString("en-IN")
+                  : "N/A"}
               </p>
             </div>
 
@@ -44,6 +60,10 @@ export default function PublicFormList() {
             </button>
           </div>
         ))}
+
+        {forms.length === 0 && (
+          <p className="text-slate-400">No forms available</p>
+        )}
       </div>
     </div>
   );

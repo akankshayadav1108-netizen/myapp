@@ -54,12 +54,15 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Unauthorized from './components/Unauthorized';
 import FormLayout from './pages/adminDashboard/FormLayout';
 import CreateForm from './pages/adminDashboard/CreateForm';
-import ViewDetails from './pages/adminDashboard/ViewDetails';
+import ViewDetails from "./pages/adminDashboard/ViewDetails";
+
 import EditForm from './pages/adminDashboard/EditForm';
 import FormCategoryPage from "./components/forms/FormCategoryPage";
 import FormSubCategoryPage from "./components/forms/FormSubCategoryPage";
 import PublicFormList from "./components/forms/PublicFormList";
 import FormCategory from './pages/adminDashboard/FormCategory';
+import Search from './pages/Search';
+
 
 
 
@@ -72,7 +75,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route index element={<LandingPage />} />
-
+            <Route path='search' element={<Search />} />
             {/* Nested routes (HERE: remove / from child paths) */}
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
@@ -82,17 +85,18 @@ function App() {
             <Route path='about' element={<About />} />
             <Route path='contact' element={<Contact />} />
             <Route path='mychange' element={<CounterBox />} />
+
             {/* <Route path='admin' element={<AdminDashboard/>}/>
           <Route path='subadmin' element={<SubAdminDashboard/>}/>
           <Route path='employee' element={<EmployeeDashboard/>}/> */}
-           
-           {/* public form routes */}
-           <Route path="forms" element={<FormCategoryPage />} />
-           <Route path="forms/:categorySlug" element={<FormSubCategoryPage />} />
-           <Route path="forms/:categorySlug/:subSlug" element={<PublicFormList />}/>
+
+            {/* public form routes */}
+            <Route path="forms" element={<FormCategoryPage />} />
+            <Route path="forms/:categorySlug" element={<FormSubCategoryPage />} />
+            <Route path="forms/:categorySlug/:subSlug" element={<PublicFormList />} />
           </Route>
 
-          <Route path="/unathorized" element={<Unauthorized/>} />
+          <Route path="/unathorized" element={<Unauthorized />} />
 
           {/* routing for admin */}
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
@@ -102,13 +106,15 @@ function App() {
               <Route path='users' element={<AllUsers />} />
               <Route path='subadmin' element={<AllSubAdmin />} />
               <Route path='employee' element={<AllEmployee />} />
-               <Route path='formcategory' element={<FormCategory/>} />
-              <Route path='formrequest' element={<FormLayout/>} > 
-              <Route index element={<FormRequest/>}/>
-              <Route path='createform' element={<CreateForm/>}/>
-              <Route path='viewdetails' element={<ViewDetails/>} />
-              <Route path='EditForm' element={<EditForm/>} />
-              
+              <Route path='formcategory' element={<FormCategory />} />
+              <Route path='formrequest' element={<FormLayout />} >
+                <Route index element={<FormRequest />} />
+                <Route path='createform' element={<CreateForm />} />
+                <Route path="edit-form/:formId" element={<EditForm />}/>
+
+                <Route path="view-details/:id" element={<ViewDetails />} />
+                
+
               </Route>
               <Route path='report' element={<AdminReport />} />
               <Route path='billing' element={<Billing />} />
@@ -120,7 +126,7 @@ function App() {
           {/* routing for subadmin */}
 
           <Route element={<ProtectedRoute allowedRoles={["subAdmin"]} />}>
-            <Route path='/subAdmin' element={<SubAdminDashboard/>}>
+            <Route path='/subAdmin' element={<SubAdminDashboard />}>
               <Route index element={<SubAdminHome />} />
               <Route path='request' element={<RequestForm />} />
               <Route path='teams' element={<TeamManagement />} />

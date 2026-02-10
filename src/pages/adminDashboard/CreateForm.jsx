@@ -62,7 +62,7 @@ const CreateForm = () => {
     try {
       await api.post("/form/create", formData);
       alert("Form Created Successfully");
-      navigate("/adminDashboard/form-request");
+      navigate("/adminDashboard/formrequest");
     } catch (err) {
       console.error(err.response?.data || err.message);
       alert(err.response?.data?.message || "Form create failed");

@@ -3,11 +3,16 @@ import { Search, PlusCircle, Pencil, Trash2, FileText, Eye } from "lucide-react"
 import api from "../../api/axios";
 import ApiStatusModal from "../../components/ApiStatusModal";
 import { NavLink } from "react-router-dom";
+import FormViewModal from "./FormViewModal";
 
 const FormRequest = () => {
   const [search, setSearch] = useState("");
   const [allFormData, setallFormData] = useState([]);
   const [refresh, setRefresh] = useState(false);
+
+  const [viewModal, setViewModal] = useState(false);
+  const [selectedForm, setSelectedForm] = useState(null);
+
 
   const [modal, setModal] = useState({
     open: false,
@@ -96,16 +101,16 @@ const FormRequest = () => {
 
         {/* CREATE BUTTON */}
         <NavLink to={"/admin/formrequest/CreateForm"}>
-        <button
-          className="
+          <button
+            className="
             flex items-center gap-2 px-5 py-2 rounded-xl
             bg-emerald-600 text-white shadow-md
             hover:bg-emerald-700 transition font-medium
           "
-        >
-          <PlusCircle size={18} />
-          Create New Form
-        </button>
+          >
+            <PlusCircle size={18} />
+            Create New Form
+          </button>
         </NavLink>
       </div>
 
@@ -162,16 +167,12 @@ const FormRequest = () => {
 
                   {/* ACTION BUTTONS */}
                   <td className="py-3 px-4 flex gap-3">
-                    <NavLink to={"/admin/formrequest/EditForm"}>
-                    <button
-                      className="
-                        p-2 rounded-lg bg-emerald-100 text-emerald-700
-                        hover:bg-emerald-200 transition
-                      "
-                    >
-                      <Pencil size={18} />
-                    </button>
-                    </NavLink>
+                    <NavLink to={`/admin/formrequest/edit-form/${form._id}`}>
+  <button className="p-2 rounded-lg bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition">
+    <Pencil size={18} />
+  </button>
+</NavLink>
+
                     <button
                       className="
                         p-2 rounded-lg bg-red-100 text-red-700
@@ -181,23 +182,23 @@ const FormRequest = () => {
                     >
                       <Trash2 size={18} />
                     </button>
-                    
 
-                    <NavLink to={"/admin/formrequest/ViewDetails"}>
-                    <button
-                      className="
-                     p-2 rounded-lg bg-blue-100 text-blue-700
-                   hover:bg-blue-200 transition
-                     "
-                      
-                    >
-                      <Eye size={18} />
-                    </button>
-                    </NavLink>
+
+                   
+                      <NavLink to={`/admin/formrequest/view-details/${form._id}`}>
+  <button className="p-2 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200">
+    <Eye size={18} />
+  </button>
+</NavLink>
+
+
+                  
 
                   </td>
                 </tr>
               ))}
+             
+
 
               {/* EMPTY STATE */}
               {allFormData.length === 0 && (
@@ -212,6 +213,8 @@ const FormRequest = () => {
               )}
             </tbody>
           </table>
+
+
         </div>
       </div>
     </section>
